@@ -1,4 +1,7 @@
+"use client";
+import NavBar from "./navbar";
 import "./globals.css";
+import { Container } from "@chakra-ui/react";
 
 export default function RootLayout({
   children,
@@ -12,7 +15,12 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Container maxW='90%' margin='0 auto'>
+          <NavBar />
+          {children}
+        </Container>
+      </body>
     </html>
   );
 }
