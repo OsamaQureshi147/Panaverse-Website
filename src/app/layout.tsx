@@ -1,7 +1,16 @@
 "use client";
+
+import { Roboto } from "@next/font/google";
+import { Container, Box } from "@chakra-ui/react";
 import NavBar from "./navbar";
+import Footer from "./footer";
 import "./globals.css";
-import { Container } from "@chakra-ui/react";
+
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -9,17 +18,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang='en' className={roboto.className}>
       <head />
       <body>
+        <Box as='header' bg='#12121266'>
+          <Container maxW='90%' margin='0 auto'>
+            <NavBar />
+          </Container>
+        </Box>
         <Container maxW='90%' margin='0 auto'>
-          <NavBar />
           {children}
         </Container>
+        <Box as='footer' bg='#12121266'>
+          <Container maxW='90%' margin='0 auto'>
+            <Footer />
+          </Container>
+        </Box>
       </body>
     </html>
   );
